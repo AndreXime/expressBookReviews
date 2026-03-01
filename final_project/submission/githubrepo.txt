@@ -1,1 +1,2 @@
+curl -s https://api.github.com/repos/YOUR_USERNAME/expressBookReviews
 {"id":123456789,"name":"expressBookReviews","full_name":"YOUR_USERNAME/expressBookReviews","private":false,"fork":true,"parent":{"id":987654321,"full_name":"ibm-developer-skills-network/expressBookReview","owner":{"login":"ibm-developer-skills-network"},"html_url":"https://github.com/ibm-developer-skills-network/expressBookReview"},"html_url":"https://github.com/YOUR_USERNAME/expressBookReviews"}
