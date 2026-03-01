@@ -43,11 +43,49 @@ function getBooksAsync() {
   });
 }
 
+// 1. Get all books
 async function getBooksViaAxios() {
-  const { data } = await axios.get("http://localhost:5000/");
-  return data;
+  try {
+    const response = await axios.get("http://localhost:5000/");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// 2. Get book by ISBN
+async function getBookByIsbnViaAxios(isbn) {
+  try {
+    const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// 3. Get book by Author
+async function getBookByAuthorViaAxios(author) {
+  try {
+    const response = await axios.get(`http://localhost:5000/author/${author}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// 4. Get book by Title
+async function getBookByTitleViaAxios(title) {
+  try {
+    const response = await axios.get(`http://localhost:5000/title/${title}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 module.exports.general = public_users;
 module.exports.getBooksAsync = getBooksAsync;
 module.exports.getBooksViaAxios = getBooksViaAxios;
+module.exports.getBookByIsbnViaAxios = getBookByIsbnViaAxios;
+module.exports.getBookByAuthorViaAxios = getBookByAuthorViaAxios;
+module.exports.getBookByTitleViaAxios = getBookByTitleViaAxios;
