@@ -1,3 +1,2 @@
-curl -s -X PUT "http://localhost:5000/customer/auth/review/1" -H "Content-Type: application/json" -d '{"review":"Great book! Highly recommended."}' -b cookies.txt
-{"message":"Review added/updated"}
-{"user1":"Great book! Highly recommended."}
+curl -s -X PUT http://localhost:5000/customer/auth/review/1 -H "Authorization: Bearer TOKEN" -H "Content-Type: application/json" -d '{"review":"Great book! Highly recommended."}'
+{"message":"Review added/updated successfully"}

@@ -54,40 +54,49 @@ public_users.get('/review/:isbn', function (req, res) {
   }
 });
 
-// --- Implementações da Task 11 (Axios / Async-Await & Promises) ---
-
-// Get all books using async/await
-public_users.get('/async-get-books', async (req, res) => {
+// Task 11: Async/Await & Axios - Get all books (async/await + axios.get)
+public_users.get('/async-get-books', async function (req, res) {
   try {
     const response = await axios.get("http://localhost:5000/");
     return res.status(200).json(response.data);
   } catch (error) {
-    return res.status(500).json({message: "Error fetching books"});
+    return res.status(500).json({ message: "Error fetching books" });
   }
 });
 
-// Get book details by ISBN using Promises (.then/.catch)
-public_users.get('/promise-get-isbn/:isbn', (req, res) => {
-  axios.get(`http://localhost:5000/isbn/${req.params.isbn}`)
-    .then(response => res.status(200).json(response.data))
-    .catch(error => res.status(500).json({message: "Error fetching by ISBN"}));
+// Task 11: Get book by ISBN (Promises .then/.catch + axios.get)
+public_users.get('/async-get-isbn/:isbn', function (req, res) {
+  const isbn = req.params.isbn;
+  axios.get("http://localhost:5000/isbn/" + isbn)
+    .then(function (response) {
+      return res.status(200).json(response.data);
+    })
+    .catch(function (error) {
+      return res.status(500).json({ message: "Error fetching by ISBN" });
+    });
 });
 
-// Get book details by Author using async/await
-public_users.get('/async-get-author/:author', async (req, res) => {
+// Task 11: Get books by Author (async/await + axios.get)
+public_users.get('/async-get-author/:author', async function (req, res) {
   try {
-    const response = await axios.get(`http://localhost:5000/author/${req.params.author}`);
+    const author = req.params.author;
+    const response = await axios.get("http://localhost:5000/author/" + encodeURIComponent(author));
     return res.status(200).json(response.data);
   } catch (error) {
-    return res.status(500).json({message: "Error fetching by Author"});
+    return res.status(500).json({ message: "Error fetching by Author" });
   }
 });
 
-// Get book details by Title using Promises (.then/.catch)
-public_users.get('/promise-get-title/:title', (req, res) => {
-  axios.get(`http://localhost:5000/title/${req.params.title}`)
-    .then(response => res.status(200).json(response.data))
-    .catch(error => res.status(500).json({message: "Error fetching by Title"}));
+// Task 11: Get books by Title (Promises .then/.catch + axios.get)
+public_users.get('/async-get-title/:title', function (req, res) {
+  const title = req.params.title;
+  axios.get("http://localhost:5000/title/" + encodeURIComponent(title))
+    .then(function (response) {
+      return res.status(200).json(response.data);
+    })
+    .catch(function (error) {
+      return res.status(500).json({ message: "Error fetching by Title" });
+    });
 });
 
 module.exports.general = public_users;

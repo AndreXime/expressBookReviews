@@ -1,2 +1,1 @@
-Submit the following GitHub URL of general.js (no curl):
-https://github.com/YOUR_USERNAME/expressBookReviews/blob/main/final_project/router/general.js
+https://github.com/AndreXime/expressBookReviews/blob/main/final_project/router/general.js

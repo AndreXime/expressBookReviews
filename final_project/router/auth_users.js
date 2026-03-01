@@ -49,7 +49,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   if (!book) return res.status(404).json({ message: "Book not found" });
   if (!book.reviews) book.reviews = {};
   book.reviews[username] = String(review);
-  return res.json({ message: "Review added/updated" });
+  return res.json({ message: "Review added/updated successfully" });
 });
 
 regd_users.delete("/auth/review/:isbn", (req, res) => {
@@ -61,7 +61,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
   if (book.reviews && book.reviews[username]) {
     delete book.reviews[username];
   }
-  return res.json({ message: "Review deleted" });
+  return res.json({ message: "Review deleted successfully" });
 });
 
 module.exports.authenticated = regd_users;
